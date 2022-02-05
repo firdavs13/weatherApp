@@ -72,22 +72,22 @@ const renderWeather = function (data) {
       <div class="fture__data">
         <p class="fture__day">${today.getDate() + 1} - ${month}</p>
         <img class="fture__img" src="./img/weather__img2.svg" alt="">
-        <p class="fture__weather">10-C</p>
-        <p class="fture__wind">🌪️ : <span class="fture__wind-num">7 km/h</span></p>
+        <p class="fture__weather"></p>
+        <p class="fture__wind">🌪️ : <span class="fture__wind-num"></span></p>
       </div>
 
       <div class="fture__data">
         <p class="fture__day">${today.getDate() + 2} - ${month}</p>
         <img class="fture-img" src="./img/weather__img3.svg" alt="">
-        <p class="fture__weather">10° C</p>
-        <p class="fture__wind">🌪️ : <span class="fture__wind-num">7 km/h</span></p>
+        <p class="fture__weather"></p>
+        <p class="fture__wind">🌪️ : <span class="fture__wind-num"></span></p>
       </div>
 
       <div class="fture__data">
         <p class="fture__day">${today.getDate() + 3} - ${month}</p>
         <img class="fture-img" src="./img/weather__img5.svg" alt="">
-        <p class="fture__weather">10° C</p>
-        <p class="fture__wind">🌪️ : <span class="fture__wind-num">7 km/h</span></p>
+        <p class="fture__weather"></p>
+        <p class="fture__wind">🌪️ : <span class="fture__wind-num"></span></p>
       </div>
 
     </div>
@@ -99,7 +99,7 @@ const renderWeather = function (data) {
 };
 
 const renderError = function (errMessage) {
-  elWeather.insertAdjacentHTML("beforeend", html);
+  elWeather.insertAdjacentHTML("beforeend", errMessage);
 };
 
 const getWeatherData = async function (city) {
@@ -111,8 +111,8 @@ const getWeatherData = async function (city) {
     const data = await request.json();
 
     renderWeather(data);
-  }catch{
-    renderError(err.message)
+  } catch (err) {
+    renderError(err.message);
   }
 };
 
