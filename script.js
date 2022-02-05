@@ -6,6 +6,10 @@ let elInput = document.querySelector(".form__input");
 
 const renderWeather = function (data) {
   let inputValue = elInput.value;
+  let dataNextDays = data.forecast;
+  let dataNextDayOne = dataNextDays[0];
+  let dataNextDayTwo = dataNextDays[1];
+  let dataNextDayThree = dataNextDays[2];
   let today = new Date();
   let monthDate = today.getMonth();
   let month;
@@ -72,22 +76,22 @@ const renderWeather = function (data) {
       <div class="fture__data">
         <p class="fture__day">${today.getDate() + 1} - ${month}</p>
         <img class="fture__img" src="./img/weather__img2.svg" alt="">
-        <p class="fture__weather"></p>
-        <p class="fture__wind">🌪️ : <span class="fture__wind-num"></span></p>
+        <p class="fture__weather">${dataNextDayOne.temperature}</p>
+        <p class="fture__wind">🌪️ : <span class="fture__wind-num">${dataNextDayOne.wind}</span></p>
       </div>
 
       <div class="fture__data">
         <p class="fture__day">${today.getDate() + 2} - ${month}</p>
         <img class="fture-img" src="./img/weather__img3.svg" alt="">
-        <p class="fture__weather"></p>
-        <p class="fture__wind">🌪️ : <span class="fture__wind-num"></span></p>
+        <p class="fture__weather">${dataNextDayTwo.temperature}</p>
+        <p class="fture__wind">🌪️ : <span class="fture__wind-num">${dataNextDayTwo.wind}</span></p>
       </div>
 
       <div class="fture__data">
         <p class="fture__day">${today.getDate() + 3} - ${month}</p>
         <img class="fture-img" src="./img/weather__img5.svg" alt="">
-        <p class="fture__weather"></p>
-        <p class="fture__wind">🌪️ : <span class="fture__wind-num"></span></p>
+        <p class="fture__weather">${dataNextDayThree.temperature}</p>
+        <p class="fture__wind">🌪️ : <span class="fture__wind-num">${dataNextDayThree.wind}</span></p>
       </div>
 
     </div>
@@ -103,7 +107,7 @@ const renderError = function (errMessage) {
 };
 
 const getWeatherData = async function (city) {
-  try{
+  try {
     const request = await fetch(
       `https://goweather.herokuapp.com/weather/${city}`
     );
